@@ -67,7 +67,9 @@ build() {
 
   # cargo-xwin 要用 Homebrew 的 llvm（clang-cl）；只在打 Windows 時放進 PATH，不影響 macOS 的建置。
   # makensis 在 C locale 下會 bad_alloc 當掉，明確給 UTF-8 locale。
+  # ring 在 ARM64 Windows 上用 clang 編譯，不吃 clang-cl 的參數，所以 cargo-xwin 改用 clang 模式。
   local llvm; llvm="$(brew --prefix llvm)/bin"
+  export XWIN_CROSS_COMPILER=clang
   for t in $TARGETS_WIN; do
     echo "== 打包 $t"
     (cd "$bundle" && PATH="$llvm:$PATH" LC_ALL=en_US.UTF-8 cargo tauri build --runner cargo-xwin --target "$t" --bundles nsis)
