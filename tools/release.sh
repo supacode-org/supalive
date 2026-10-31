@@ -41,6 +41,21 @@ preflight() {
   cargo tauri --version >/dev/null 2>&1 || die "缺少 tauri-cli（cargo install tauri-cli --version \"^2\" --locked）"
 }
 
+# 執行檔裡會留下原始碼路徑（panic 訊息用），把家目錄和專案目錄換掉，不洩漏使用者名稱。
+# 用各 target 自己的 RUSTFLAGS：設全域 RUSTFLAGS 會蓋掉 cargo-xwin 給的連結設定。
+remap_paths() {
+  local v; v="CARGO_TARGET_$(echo "$1" | tr 'a-z-' 'A-Z_')_RUSTFLAGS"
+  export "$v=--remap-path-prefix=$HOME=~ --remap-path-prefix=$PWD=."
+}
+
+# 確認執行檔裡沒有家目錄
+check_paths() { # <執行檔>...
+  local f
+  for f in "$@"; do
+    ! LC_ALL=C grep -q -a -F "$HOME" "$f" || die "$f 裡有本機路徑 $HOME"
+  done
+}
+
 zip_cli() { # <target> <os 名稱> <執行檔名>
   local out="$PWD/$DIST/supalive-cli_${VER}_$2.zip"
   (cd "target/$1/release" && zip -q -X "$out" "$3")
@@ -59,9 +74,11 @@ build() {
   for t in $TARGETS_MAC; do
     echo "== 打包 $t"
     # ad-hoc 簽名，沒有 Developer ID
+    remap_paths "$t"
     (cd "$bundle" && APPLE_SIGNING_IDENTITY=- cargo tauri build --target "$t" --bundles dmg)
     cp target/"$t"/release/bundle/dmg/SupaLive_"$VER"_*.dmg "$DIST/"
     cargo build -q --release -p supalive --target "$t"
+    check_paths target/"$t"/release/supalive-desktop target/"$t"/release/supalive
     zip_cli "$t" "macos-${t%%-*}" supalive
   done
 
@@ -72,9 +89,11 @@ build() {
   export XWIN_CROSS_COMPILER=clang
   for t in $TARGETS_WIN; do
     echo "== 打包 $t"
+    remap_paths "$t"
     (cd "$bundle" && PATH="$llvm:$PATH" LC_ALL=en_US.UTF-8 cargo tauri build --runner cargo-xwin --target "$t" --bundles nsis)
     cp target/"$t"/release/bundle/nsis/SupaLive_"$VER"_*-setup.exe "$DIST/"
     PATH="$llvm:$PATH" cargo xwin build -q --release -p supalive --target "$t"
+    check_paths target/"$t"/release/supalive-desktop.exe target/"$t"/release/supalive.exe
     zip_cli "$t" "windows-${t%%-*}" supalive.exe
   done
 
