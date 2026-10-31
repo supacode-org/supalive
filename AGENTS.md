@@ -65,3 +65,4 @@
 - 最低 Rust 1.88。`cargo build` 預設只建 core 與 cli。桌面版用 `cargo build -p supalive-desktop`。
 - 桌面版介面是純 HTML/CSS/JS，不用 npm。介面檔在編譯時嵌入，`build.rs` 讓 cargo 監看 `ui/`，改了介面重新編譯就會帶進去。
 - 雲端環境連不到抖音 CDN，真實直播只能在 Leo 的 Mac 上測。
+- 發佈版本在本機用 `tools/release.sh`，流程見 [`spec/20261101-release.md`](spec/20261101-release.md)。

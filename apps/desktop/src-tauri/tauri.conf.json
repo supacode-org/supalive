@@ -1,7 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "SupaLive",
-  "version": "0.1.0",
   "identifier": "app.supalive.desktop",
   "build": {
     "frontendDist": "../ui"
@@ -33,6 +32,11 @@
     "targets": "all",
     "category": "Video",
     "shortDescription": "抖音直播錄製助手",
-    "icon": ["../../../.private/supalive.icon", "icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+    "icon": ["../../../.private/supalive.icon", "icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+    "windows": {
+      "nsis": {
+        "languages": ["TradChinese", "English"]
+      }
+    }
   }
 }

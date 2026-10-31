@@ -45,6 +45,17 @@ cargo tauri build    # 打包成 .app / .dmg（macOS）或 .msi / .exe（Windows
 
 用 `tools/build-appstore.sh` 建置：關掉私有 API 和透明視窗，介面改用純色底，其他功能不變。
 
+## 發佈
+
+在 Apple Silicon Mac 上一次打包 macOS 與 Windows 的 arm64、x86_64 版本並發佈到 GitHub Release：
+
+```sh
+tools/release.sh build              # 檢查、測試、打包到 dist/v<版本>/
+tools/release.sh publish notes.md   # 推 tag、建立 Release、版本號加一
+```
+
+需要的工具和簽名狀況見 [`spec/20261101-release.md`](../spec/20261101-release.md)。
+
 ## 命令列
 
 ```sh
