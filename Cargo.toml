@@ -1,0 +1,23 @@
+[workspace]
+resolver = "2"
+members = ["crates/core", "crates/cli", "apps/desktop/src-tauri"]
+# 桌面版需要系統 WebView 開發套件，一般 `cargo build` 只建置核心與 CLI
+default-members = ["crates/core", "crates/cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+rust-version = "1.88"
+
+[workspace.dependencies]
+anyhow = "1"
+bytes = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+clap = { version = "4", features = ["derive"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal", "time", "sync", "fs", "io-util"] }
+
+[profile.release]
+lto = true
+strip = true

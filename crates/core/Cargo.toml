@@ -1,0 +1,14 @@
+[package]
+name = "supalive-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Douyin live stream capture and FLV to fragmented MP4 remux, no ffmpeg."
+
+[dependencies]
+anyhow.workspace = true
+bytes.workspace = true
+chrono.workspace = true
+reqwest.workspace = true
+tokio.workspace = true

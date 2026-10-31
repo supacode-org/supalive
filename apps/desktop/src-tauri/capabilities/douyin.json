@@ -1,0 +1,9 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "douyin",
+  "description": "抖音側欄裡的網頁只能回報抓到的拉流網址，其他指令一律不給。",
+  "webviews": ["douyin"],
+  "local": false,
+  "remote": { "urls": ["https://*.douyin.com"] },
+  "permissions": ["allow-douyin-stream"]
+}

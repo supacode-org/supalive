@@ -1,0 +1,17 @@
+{
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "SupaLive",
+        "width": 1200,
+        "height": 780,
+        "minWidth": 900,
+        "minHeight": 600,
+        "transparent": true,
+        "decorations": false,
+        "shadow": true
+      }
+    ]
+  }
+}

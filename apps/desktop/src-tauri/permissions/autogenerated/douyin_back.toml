@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-douyin-back"
+description = "Enables the douyin_back command without any pre-configured scope."
+commands.allow = ["douyin_back"]
+
+[[permission]]
+identifier = "deny-douyin-back"
+description = "Denies the douyin_back command without any pre-configured scope."
+commands.deny = ["douyin_back"]

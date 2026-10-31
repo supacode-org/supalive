@@ -1,0 +1,19 @@
+# cargo deny check licenses bans
+# 依賴只允許寬鬆授權（本專案自己的 crate 是 GPL-3.0-or-later，列在 exceptions），並禁止任何 ffmpeg 綁定進入依賴樹。
+[licenses]
+allow = ["MIT", "Apache-2.0", "Apache-2.0 WITH LLVM-exception", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Unicode-3.0", "Zlib", "CDLA-Permissive-2.0"]
+confidence-threshold = 0.9
+exceptions = [
+    { crate = "supalive", allow = ["GPL-3.0-or-later"] },
+    { crate = "supalive-core", allow = ["GPL-3.0-or-later"] },
+    { crate = "supalive-desktop", allow = ["GPL-3.0-or-later"] },
+]
+
+[bans]
+deny = [
+    { name = "ffmpeg-next" },
+    { name = "ffmpeg-sys-next" },
+    { name = "ffmpeg-sys" },
+    { name = "rsmpeg" },
+    { name = "rusty_ffmpeg" },
+]

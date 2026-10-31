@@ -1,0 +1,5 @@
+/target
+*.mp4
+*.flv
+.DS_Store
+/apps/desktop/src-tauri/gen/

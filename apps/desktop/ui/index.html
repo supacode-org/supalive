@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SupaLive</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="win" id="win">
+  <div class="tbar" data-tauri-drag-region>
+    <div class="tt">SupaLive</div>
+    <div class="wctl">
+      <button data-act="win-min" aria-label="最小化"><svg viewBox="0 0 10 10" width="11" height="11" fill="none" stroke="currentColor"><path d="M0 5h10"/></svg></button>
+      <button data-act="win-max" aria-label="最大化"><svg viewBox="0 0 10 10" width="11" height="11" fill="none" stroke="currentColor"><rect x=".5" y=".5" width="9" height="9"/></svg></button>
+      <button data-act="win-close" class="close" aria-label="關閉"><svg viewBox="0 0 10 10" width="11" height="11" fill="none" stroke="currentColor"><path d="M0 0l10 10M10 0L0 10"/></svg></button>
+    </div>
+  </div>
+  <div class="body">
+    <nav class="side glass" id="side" aria-label="直播間"></nav>
+    <div class="rz" id="rz-side" role="separator" aria-orientation="vertical" aria-label="調整側欄寬度" tabindex="0"></div>
+    <main class="main" id="main"></main>
+    <div class="rz" id="rz-dy" role="separator" aria-orientation="vertical" aria-label="調整選取直播的寬度" tabindex="0" hidden></div>
+    <aside class="dy glass" id="dy" hidden></aside>
+  </div>
+  <div class="scrim" id="scrim" hidden></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+</div>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

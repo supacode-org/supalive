@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-douyin-stream"
+description = "Enables the douyin_stream command without any pre-configured scope."
+commands.allow = ["douyin_stream"]
+
+[[permission]]
+identifier = "deny-douyin-stream"
+description = "Denies the douyin_stream command without any pre-configured scope."
+commands.deny = ["douyin_stream"]

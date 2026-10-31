@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-douyin-open"
+description = "Enables the douyin_open command without any pre-configured scope."
+commands.allow = ["douyin_open"]
+
+[[permission]]
+identifier = "deny-douyin-open"
+description = "Denies the douyin_open command without any pre-configured scope."
+commands.deny = ["douyin_open"]

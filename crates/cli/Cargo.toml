@@ -1,0 +1,13 @@
+[package]
+name = "supalive"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+chrono.workspace = true
+clap.workspace = true
+supalive-core = { path = "../core" }
+tokio.workspace = true

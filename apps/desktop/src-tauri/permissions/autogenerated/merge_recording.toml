@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-merge-recording"
+description = "Enables the merge_recording command without any pre-configured scope."
+commands.allow = ["merge_recording"]
+
+[[permission]]
+identifier = "deny-merge-recording"
+description = "Denies the merge_recording command without any pre-configured scope."
+commands.deny = ["merge_recording"]
